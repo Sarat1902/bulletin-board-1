@@ -9,7 +9,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
+     <a href="/">Bulletin Board</a>
+  <hr>
+  <div> <%= notice %> </div>
+  <div> <%= alert %> </div>
+  <hr>
   <body>
     <%= yield %>
   </body>
