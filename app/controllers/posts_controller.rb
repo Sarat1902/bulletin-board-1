@@ -57,4 +57,11 @@ class PostsController < ApplicationController
 
     redirect_to("/posts", { :notice => "Post deleted successfully."} )
   end
+
+  def bulletin
+    board_id = params.fetch("path_id")
+    @the_board = Board.where({:id => board_id }).at(0)
+    @board_name = @the_board.name
+    render({:template => "/posts/bulletin"})
+  end
 end

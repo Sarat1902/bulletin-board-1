@@ -1,3 +1,69 @@
   <a href="/">Bulletin Board</a>
   <hr>
-  
+  <h1>
+  <%=@board_name%>
+  </h1>
+  <hr>
+   <h2>
+      Add a new post
+    </h2>
+    <form action="/insert_post" method="post">
+      <div>
+        <label for="title">
+          Title
+        </label>
+        <input type="text" id="title" name="query_title">
+      </div>
+      
+      <div>
+        <label for="body">
+          Body
+        </label>
+        <input type="text" id="body" name="query_body">
+      </div>
+      
+      <div>
+        <label for="expiration">
+          Expires on
+        </label>
+        <input type="Date" id="expiration" name="query_expires_on" value="Date.today">
+      </div>
+      
+      <button>
+        Add post
+      </button>
+    </form>
+    <hr>
+<h3> Active posts </h3>
+<table border="1">
+  <tr>
+    <th>
+       Title
+    </th>
+    <th>
+       Body
+    </th>
+    <th>
+       Posted on
+    </th>
+    <th>
+       Expires on
+    </th>
+  </tr>
+
+  <%@the_board.posts.each do |a_post|%>
+  <tr>
+    <td>
+    <%=a_post.title%>
+    </td>
+    <td>
+    <%=a_post.body%>
+    </td>
+    <td>
+    <%=a_post.created_at%>
+    </td>
+    <td>
+    <%=a_post.expires_on%>
+  </tr>
+  <%end%>
+</table>
