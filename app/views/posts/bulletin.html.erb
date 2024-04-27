@@ -19,7 +19,7 @@
         <label for="body">
           Body
         </label>
-        <input type="text" id="body" name="query_body">
+        <textarea type="text" id="body" name="query_body" cols="30" rows="10"></textarea>
       </div>
       
       <div>
@@ -51,7 +51,7 @@
     </th>
   </tr>
 
-  <%@the_board.posts.each do |a_post|%>
+  <%@the_board.active_posts.each do |a_post|%>
   <tr>
     <td>
     <%=a_post.title%>
@@ -60,10 +60,44 @@
     <%=a_post.body%>
     </td>
     <td>
-    <%=a_post.created_at%>
+    <%=a_post.created_at.strftime("%b %e, %Y")%>
     </td>
     <td>
-    <%=a_post.expires_on%>
+    <%=a_post.expires_on.strftime("%b %e, %Y")%>
+  </tr>
+  <%end%>
+</table>
+
+<h4> Expired posts </h4>
+<table border="1">
+  <tr>
+    <th>
+       Title
+    </th>
+    <th>
+       Body
+    </th>
+    <th>
+       Posted on
+    </th>
+    <th>
+       Expires on
+    </th>
+  </tr>
+
+  <%@the_board.expired_posts.each do |a_post|%>
+  <tr>
+    <td>
+    <%=a_post.title%>
+    </td>
+    <td>
+    <%=a_post.body%>
+    </td>
+    <td>
+    <%=a_post.created_at.strftime("%b %e, %Y")%>
+    </td>
+    <td>
+    <%=a_post.expires_on.strftime("%b %e, %Y")%>
   </tr>
   <%end%>
 </table>
